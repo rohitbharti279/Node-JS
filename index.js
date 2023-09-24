@@ -26,5 +26,5 @@ else if (input[2] == "remove") {
     fs.unlinkSync(input[3]);
 }
 else {
-    console.log("Error: Unknown");
+    console.log("Error: invalid/unknown");
 }
