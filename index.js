@@ -67,32 +67,80 @@ http.createServer((req, res) => {
 
 
 
-//CRUD = create, read, update, delete
-const fs = require("fs");
-const path = require("path");
-const dirPath = path.join(__dirname, "crud");
-const filePathWithName =  `${dirPath}/filename.txt`;
-// console.log(dirPath);
+// //CRUD = create, read, update, delete
+// const fs = require("fs");
+// const path = require("path");
+// const dirPath = path.join(__dirname, "crud");
+// const filePathWithName =  `${dirPath}/filename.txt`;
+// // console.log(dirPath);
 
-//create file inside the crud folder
-fs.writeFileSync(filePathWithName, "content of the file you write constent or say information about the file");
+// //create file inside the crud folder
+// fs.writeFileSync(filePathWithName, "content of the file you write constent or say information about the file");
 
-//read file
-fs.readFile(filePathWithName,"utf8", (error, item) => {
-    console.log(item);
+// //read file
+// fs.readFile(filePathWithName,"utf8", (error, item) => {
+//     console.log(item);
+// })
+
+// //update file
+// fs.appendFile(filePathWithName, " and now you update or say add information about the file here", (error) => {
+//     if(!error)
+//     console.log("file updated successfully");
+// })
+
+// //rename file
+// fs.rename(filePathWithName, `${dirPath}/renameCricket.txt`, (error) => {
+//     if(!error)
+//     console.log("file renamed successfully");
+// })
+
+// //delete file
+// fs.unlinkSync(`${dirPath}/renameCricket.txt`);
+
+
+
+
+
+console.log(1);
+
+// setTimeout(function() {
+//     console.log(2);
+// },2000);
+setTimeout(() => {
+    console.log(2);
+}, 2000)
+
+console.log(3);
+
+
+const a = 10;
+let b = 5;
+console.log(a+b);
+setTimeout(()=> {
+   b = 20;
+    // console.log(a+b);
+}, 0);
+
+// const rohit = function() {
+//     b = 20;
+//     return b;
+// }
+// console.log(rohit());
+
+console.log(a+b);
+
+
+const x = 5;
+let y = 10;
+console.log(1);
+let waitingData = new Promise((resolve, reject)=>{
+    setTimeout(() => {
+        resolve(30);
+    }, 2000)
 })
-
-//update file
-fs.appendFile(filePathWithName, " and now you update or say add information about the file here", (error) => {
-    if(!error)
-    console.log("file updated successfully");
+console.log(2);
+waitingData.then((data)=> {
+    y = data;
+    console.log(a+b);
 })
-
-//rename file
-fs.rename(filePathWithName, `${dirPath}/renameCricket.txt`, (error) => {
-    if(!error)
-    console.log("file renamed successfully");
-})
-
-//delete file
-fs.unlinkSync(`${dirPath}/renameCricket.txt`);
+console.log(3);
