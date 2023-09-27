@@ -101,46 +101,106 @@ http.createServer((req, res) => {
 
 
 
-console.log(1);
-
-// setTimeout(function() {
+// console.log(1);
+// // setTimeout(function() {
+// //     console.log(2);
+// // },2000);
+// setTimeout(() => {
 //     console.log(2);
-// },2000);
-setTimeout(() => {
-    console.log(2);
-}, 2000)
+// }, 2000)
 
-console.log(3);
+// console.log(3);
 
 
-const a = 10;
-let b = 5;
-console.log(a+b);
-setTimeout(()=> {
-   b = 20;
-    // console.log(a+b);
-}, 0);
+// const a = 10;
+// let b = 5;
+// console.log(a+b);
+// setTimeout(()=> {
+//    b = 20;
+//     // console.log(a+b);
+// }, 0);
 
-// const rohit = function() {
-//     b = 20;
-//     return b;
-// }
-// console.log(rohit());
+// // const rohit = function() {
+// //     b = 20;
+// //     return b;
+// // }
+// // console.log(rohit());
 
-console.log(a+b);
+// console.log(a+b);
 
 
-const x = 5;
-let y = 10;
-console.log(1);
-let waitingData = new Promise((resolve, reject)=>{
-    setTimeout(() => {
-        resolve(30);
-    }, 2000)
+// const x = 5;
+// let y = 10;
+// console.log(1);
+// let waitingData = new Promise((resolve, reject)=>{
+//     setTimeout(() => {
+//         resolve(30);
+//     }, 2000)
+// })
+// console.log(2);
+// waitingData.then((data)=> {
+//     y = data;
+//     console.log(a+b);
+// })
+// console.log(3);
+
+
+
+
+
+
+
+//express
+const express = require("express");
+const app = express();
+
+//route
+// for home page
+app.get("", (req,res) => {
+    console.log("Data sent by browser: ", req.query);
+    // res.send("<h1>welcome to my home page</h1>" + req.query.name);
+    res.send(`<h1>welcome to my home page</h1>
+    <a href="/about">Go to about page</a>
+    `);
 })
-console.log(2);
-waitingData.then((data)=> {
-    y = data;
-    console.log(a+b);
+
+// for other page
+app.get("/about", (req,res) => {
+    res.send(`
+    <h1>welcome to my about page</h1>
+    <input type="text" placeholder="user name..." value=${req.query.name}/>
+    <button onclick="myFucntion()">click me</button>
+    <a href="/help">Go to help page</a>
+    <a href="/">Go to home page</a>
+    `
+    );
 })
-console.log(3);
+
+app.get("/help", (req,res) => {
+    // res.send(`<h1>welcome to my help page</h1>
+    // <a href="/">Go to home page</a>
+    // `)
+
+    // Display Json file
+    res.send([
+        {
+            firstName: 'John',
+            lastName: 'kumar',
+            age: 32
+        },
+
+        {
+            firstName: 'sam',
+            lastName: 'sdfjsf',
+            age: 99
+        },
+
+        {
+            firstName: 'surseh',
+            lastName: 'mode',
+            age: 132
+        }
+    ]);
+})
+
+app.listen(4200);
